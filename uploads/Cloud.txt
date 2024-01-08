@@ -1,0 +1,1 @@
+However, because existing erasure codes cannot adapt the generator matrix and data placement scheme to different network environments and encoding parameters, they usually incur a large network resource consumption (NRC) for repairing data in JointCloud storage systems. 

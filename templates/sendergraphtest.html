@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/design.css')}}">
+    <script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>   
+  <title>Cloud Service</title>
+  <script type="text/javascript">
+    window.onload = function() {
+        var dps = [
+                    {% for key,value in data.items() %}
+                        { x: {{key}}, y: {{value}} },
+                    {% endfor %}
+        ];
+        var chart = new CanvasJS.Chart("chartContainer", {
+              title:{
+                text: ""              
+              },
+              data: [              
+              {                
+                type: "pie",
+                showInLegend: true,
+		            indexLabel: "{y}%",
+		            indexLabelPlacement: "inside",
+		            legendText: "{x}",
+		            toolTipContent: "{y}%",
+                dataPoints: dps
+              }
+              ]
+        });
+        chart.render();
+    }
+</script>
+    
+</head>
+<body>
+    <div class="container mt-2 d-flex bg-primary text-white">
+        <h2 class="text-center">SECURE DATA STORAGE AND SHARING TECHNIQUES FOR DATA PROTECTION IN CLOUD ENVIRONMENTS</h2>
+    </div>     
+
+    <div class="container no-padding"> 
+      <nav class="navbar no-padding navbar-expand-md bg-dark navbar-dark">        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('senderhome') }}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('senderupload') }}">Upload Files</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('senderviewfile') }}">View Files</a>
+            </li>   
+            <li class="nav-item bg-success">
+                <a class="nav-link active" href="{{url_for('senderqueryanalysis')}}">Query Analysis</a>
+              </li>   
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('logout')}}">Logout</a>
+            </li>          
+          </ul>
+        </div>
+      </nav>
+    </div>   
+
+    <div class="container no-padding hheight mb-2 bg-light">               
+        <div class="row px-3 mb-1 titlealign">
+          <div class="col"></div>
+          <div class="col">
+            <p class="divider-text">
+              <span class="bg-light">View File Query Analysis</span>
+            </p>
+          </div>
+          <div class="col"></div>            
+        </div> 
+        
+        <div class="d-flex justify-content-center mb-3">
+          <div id="chartContainer" style="height: 350px; width: 40%;"></div>
+          <script src="{{url_for('static', filename='js/canvasjs.min.js')}}"></script>             
+        </div>                    
+    </div>    
+
+</body>
+</html>

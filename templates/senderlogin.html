@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/design.css')}}">
+    <script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+    <title>Cloud Service</title>
+    <script language="javascript">
+      function Validation(thisform)
+      {        
+        with(thisform)
+        {
+          if(semail.value=="")
+          {
+            alert("Please Enter Email ID...!");
+            semail.focus();
+            return false;
+          }
+        }
+        with(thisform)
+        {
+          if(spass.value=="")
+          {
+            alert("Please Enter Password...!");
+            spass.focus();
+            return false;
+          }
+        }        
+      }
+  </script>
+</head>
+<body>
+  <div class="container mt-2 d-flex bg-primary text-white">
+    <h2 class="text-center">SECURE DATA STORAGE AND SHARING TECHNIQUES FOR DATA PROTECTION IN CLOUD ENVIRONMENTS</h2>
+  </div> 
+  <div class="container no-padding"> 
+    <nav class="navbar no-padding navbar-expand-md bg-dark navbar-dark">   
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="collapsibleNavbar">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+        </li>
+        <li class="nav-item dropdown bg-success">
+          <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Sender</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('senderreg') }}">Register</a></li>
+            <li><a class="dropdown-item" href="{{ url_for('senderlogin') }}">Login</a></li>               
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('cloudlogin') }}">Cloud Server</a>
+        </li>   
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Reciever</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="{{ url_for('recieverreg') }}">Register</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('recieverlogin') }}">Login</a></li>               
+          </ul>
+        </li>         
+      </ul>
+    </div>
+  </nav>
+</div>   
+    <div class="container no-padding mb-2 bg-light"> 
+        <div class="row signup w-75 bg-light p-4">
+            <div class="col-sm-12 col-md-5 align-self-center p-3">
+                <img class="img-fluid" src="{{url_for('static',filename='images/signup.png')}}" alt="regimage">
+            </div>
+            <div class="col-sm-12 col-md-7 px-3">
+                <form name="form1" method="post" action="/senderloginaction" onsubmit="return Validation(this)">
+
+                    <div class="row px-3 mb-3">
+                      <p class="divider-text">
+                        <span class="bg-light">Sender Login</span>
+                      </p>
+                    </div>        
+                                     
+                    <div class="row mt-3 mb-3">
+                      <div class="col">
+                        <input type="email" name="semail" class="form-control" placeholder="E-Mail ID"> 
+                      </div>
+                    </div>
+                    <div class="row mt-3 mb-3">
+                        <div class="col">
+                          <input type="password" name="spass" class="form-control" placeholder="Password"> 
+                        </div>
+                    </div>                    
+                            
+                    <div class="row mt-3">
+                      <div class="col">
+                        <div class="d-grid gap-3"> 
+                          <input name="submit" value="SIGNIN" type="submit" class="btn btn-primary">
+                        </div> 
+                      </div>
+                    </div>        
+                  </form>
+                  <div class="row mt-3">
+                    <div class="col">
+                      <label style="color:black">{{ msg }}</label>
+                    </div>
+                  </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/design.css')}}">
+    <script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+    <title>Cloud Service</title>
+</head>
+<body>
+
+    <div class="container mt-2 d-flex bg-primary text-white">
+        <h2 class="text-center">SECURE DATA STORAGE AND SHARING TECHNIQUES FOR DATA PROTECTION IN CLOUD ENVIRONMENTS</h2>
+    </div> 
+
+    <div class="container no-padding"> 
+      <nav class="navbar no-padding navbar-expand-md bg-dark navbar-dark">       
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+        <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item bg-success">
+              <a class="nav-link active" href="{{ url_for('index') }}">Home</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Sender</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('senderreg') }}">Register</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('senderlogin') }}">Login</a></li>               
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('cloudlogin') }}">Cloud Server</a>
+            </li>   
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">Reciever</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{{ url_for('recieverreg') }}">Register</a></li>
+                <li><a class="dropdown-item" href="{{ url_for('recieverlogin') }}">Login</a></li>               
+              </ul>
+            </li>         
+          </ul>
+        </div>
+      </nav>
+    </div>   
+    
+    <div class="container mb-2 no-padding"> 
+    <div id="demo" class="carousel slide" data-bs-ride="carousel">    
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#demo" data-bs-slide-to="2"></button>
+    </div>        
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{{url_for('static',filename='images/front_image.png')}}" alt="Los Angeles" class="d-block" style="width:100%;height:50%">
+        <div class="carousel-caption">
+          <h3>Los Angeles</h3>
+          <p>We had such a great time in LA!</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{{url_for('static',filename='images/front_image.png')}}" alt="Chicago" class="d-block" style="width:100%;height:50%">
+        <div class="carousel-caption">
+          <h3>Chicago</h3>
+          <p>Thank you, Chicago!</p>
+        </div> 
+      </div>
+      <div class="carousel-item">
+        <img src="{{url_for('static',filename='images/front_image.png')}}" alt="New York" class="d-block" style="width:100%;height:50%">
+        <div class="carousel-caption">
+          <h3>New York</h3>
+          <p>We love the Big Apple!</p>
+        </div>  
+      </div>
+    </div>   
+    <button class="carousel-control-prev" type="button" data-bs-target="#demo" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#demo" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </button>
+    </div> 
+    </div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/design.css')}}">
+    <script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+    <title>Cloud Service</title>
+    <script language="javascript">
+        function Validation(thisform)
+        {
+          with(thisform)
+          {
+            if(skey.value=="")
+            {
+              alert("Please Enter Signature Key...!");
+              skey.focus();
+              return false;
+            }
+          }
+        }
+    </script>
+</head>
+<body>
+    <div class="container mt-2 d-flex bg-primary text-white">
+        <h2 class="text-center">SECURE DATA STORAGE AND SHARING TECHNIQUES FOR DATA PROTECTION IN CLOUD ENVIRONMENTS</h2>
+    </div>     
+
+    <div class="container no-padding"> 
+      <nav class="navbar no-padding navbar-expand-md bg-dark navbar-dark">        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('recieverhome')}}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('recieversearchfiles')}}">Search Files</a>
+            </li>
+            <li class="nav-item bg-success">
+              <a class="nav-link active" href="{{ url_for('recieverdownloadfile')}}">Download Files</a>
+            </li>               
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('rlogout') }}">Logout</a>
+            </li>          
+          </ul>
+        </div>
+      </nav>
+    </div>   
+
+    <div class="container no-padding hheight mb-2 bg-light">               
+        <div class="row px-3 mb-1">
+          <div class="col"></div>
+          <div class="col">
+            <p class="divider-text">
+              <span class="bg-light">Signature Verification</span>
+            </p>
+          </div>
+          <div class="col"></div>            
+        </div> 
+        <form name="form1" action="/signatureverification" method="post" onsubmit="return Validation(this)">
+            <div class="row px-3 mb-1">
+                <div class="col"></div>
+                <div class="col">
+                  <input type="text" name="skey" class="form-control" placeholder="Enter Signature Key">
+                </div>
+            <div class="col"></div> 
+            </div>
+            <div class="row px-3 my-3">
+                <div class="col"></div>
+                <div class="col">
+                    <div class="d-grid gap-3">
+                      <input type="hidden" name="did" value="{{did}}">
+                      <input name="submit" value="Signature Verify" type="submit" class="btn btn-primary">
+                    </div> 
+                </div>
+            <div class="col"></div> 
+            </div>  
+        </form>
+        <div class="row px-3 my-3">
+          <div class="col"></div>
+          <div class="col">
+             <p>{{msg}}</p>
+          </div>
+          <div class="col"></div> 
+        </div> 
+    </div>  
+
+</body>
+</html>

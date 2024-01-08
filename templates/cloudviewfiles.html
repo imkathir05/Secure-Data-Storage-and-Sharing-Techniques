@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/design.css')}}">
+    <script src="{{url_for('static', filename='js/bootstrap.bundle.min.js')}}"></script>
+    <title>Cloud Service</title>
+</head>
+<body>
+    <div class="container mt-2 d-flex bg-primary text-white">
+        <h2 class="text-center">SECURE DATA STORAGE AND SHARING TECHNIQUES FOR DATA PROTECTION IN CLOUD ENVIRONMENTS</h2>
+    </div>     
+
+    <div class="container no-padding"> 
+      <nav class="navbar no-padding navbar-expand-md bg-dark navbar-dark">        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#collapsibleNavbar">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('cloudhome') }}">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('cloudviewsender') }}">View Senders</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('cloudviewreciever') }}">View Receivers</a>
+            </li>  
+            <li class="nav-item bg-success">
+              <a class="nav-link active" href="{{ url_for('cloudviewfiles') }}">View Files</a>
+            </li> 
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('cloudviewfilerequest')}}">Requested Files</a>
+            </li>   
+            <li class="nav-item">
+              <a class="nav-link" href="{{url_for('clogout')}}">Logout</a>
+            </li>          
+          </ul>
+        </div>
+      </nav>
+    </div>   
+
+    <div class="container no-padding hheight mb-2 bg-light">               
+        <div class="row px-3 mb-1 titlealign">
+          <div class="col"></div>
+          <div class="col">
+            <p class="divider-text">
+              <span class="bg-light">All Files Details</span>
+            </p>
+          </div>
+          <div class="col"></div>            
+        </div> 
+        
+        <div class="table-responsive px-4">
+          <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <th>File ID</th>
+              <th>Sender Name</th>
+              <th>File Name</th>              
+              <th>Date</th>
+              <th>Time</th>             
+            </tr>
+          </thead>
+          <tbody>
+            {% for rs,rs1 in zip(data,sname) %}              
+            <tr>
+              <td>{{rs[0]}}</td>               
+              <td>{{rs1[0]}}</td>                  
+              <td>{{rs[2]}}</td>
+              <td>{{rs[3]}}</td>
+              <td>{{rs[4]}}</td>              
+            </tr>                    
+            {% endfor %}  
+          </tbody>
+          </table>           
+        </div>   
+        <p>{{n}}</p>
+    </div>    
+
+</body>
+</html>
